@@ -5,6 +5,7 @@
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="mapControls.js"></script>
+        <script src="SPTrans.js"></script>
         <style>
         #map { width:400px; height: 400px; float: left; }
         #bt {float: left;}
@@ -43,6 +44,7 @@
                 });  
 
             map.addControl(new  mapboxgl.NavigationControl());  
+            loginSPTrans();
         </script>
     </body>
 </html>

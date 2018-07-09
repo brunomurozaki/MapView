@@ -4,6 +4,7 @@ markers = {};
 proximity = "-46.642090, -23.505630"; //Alterar com o 
 possibleAddresses = {};
 
+
 function addMarker(center, name){
     var  marker  =  new  mapboxgl.Marker()  
                                 .setLngLat(center)  

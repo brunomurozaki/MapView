@@ -2,6 +2,18 @@
 <html>
     
     <?php
+
+        function getEndereco(){
+            $ch = curl_init(); 
+            curl_setopt ($ch, CURLOPT_URL, $url . '/Login/Autenticar?token=' . $chave_api); 
+            curl_setopt ($ch, CURLOPT_POST, true); 
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Length: 0'));
+            curl_setopt ($ch, CURLOPT_COOKIEFILE, $cookie); 
+            curl_setopt ($ch, CURLOPT_COOKIEJAR, $cookie); 
+            //$result = curl_exec ($ch); 
+            curl_close ($ch);
+        }
+
         error_reporting(E_ALL);
         ini_set('display_errors', 'On');
 
@@ -22,6 +34,12 @@
         //$result = curl_exec ($ch); 
         curl_close ($ch);
         //echo "<hr>";
+
+        if($_GET("campoBusca") != ""){
+            
+        }
+
+
     ?>
 
     <head>
@@ -141,7 +159,7 @@
             
             <div id="header">
                 <div class="divEsq divLarg65">
-                    <div id="controles">
+                    <form id="controles">
                         <h1>Buscar Endereço:</h1>
                         <div class="divEsq divMrgLeft15">
                             <input id="campoBusca" type="search" name="campoBusca"
@@ -162,7 +180,7 @@
                                 <input id="paradaOnibus" type="checkbox" name="paradaOnibus" value="paradaOnibus"/> Parada de ônibus
                             </p>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="divDir divLarg35">
                     <div id="idMembros">
