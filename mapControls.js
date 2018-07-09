@@ -46,19 +46,29 @@ function getAddress(address){
         if(features[0].relevance == 1){
             positionMapByFeature(features[0]);
         } else {
-            var li, a, ul=$(".itens");
+            //var li, a, ul=$(".itens");
+            
+            var dataList = $(document.getElementById('endSuggest'));
+            var option;
+            
             for(var i = 0; i < features.length; i++){
-                li = $(document.createElement("li"));
+                /*li = $(document.createElement("li"));
                 a = $(document.createElement("a"));
                 
                 a.html(features[i].place_name);
                 possibleAddresses[features[i].place_name] = features[i];
-                a.on("click", {name: features[i].place_name}, function(e){
+                */
+                option = $(document.createElement('option'));
+                option.value = features[i].place_name;
+                
+                option.on("click", {name: features[i].place_name}, function(e){
                     positionMapByFeature(possibleAddresses[e.data.name]);
                 });
+                
+                dataList.appendChild(option);
 
-                li.append(a);
-                ul.append(li);
+                //li.append(a);
+                //ul.append(li);
                 //$(".result").append(JSON.stringify(features[i]));
             }
         }
