@@ -141,7 +141,7 @@
             
             <div id="header">
                 <div class="divEsq divLarg65">
-                    <form id="controles">
+                    <div id="controles">
                         <h1>Buscar Endereço:</h1>
                         <div class="divEsq divMrgLeft15">
                             <input id="campoBusca" type="search" name="campoBusca"
@@ -164,7 +164,7 @@
                                 <input id="paradaOnibus" type="checkbox" name="paradaOnibus" value="paradaOnibus"/> Parada de ônibus
                             </p>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="divDir divLarg35">
                     <div id="idMembros">
