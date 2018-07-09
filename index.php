@@ -244,6 +244,7 @@
             
             $("#botaoBusca").on("click", function(e){
                 var add = $("#campoBusca").val() + ".json";
+                getParadas();
                 getAddress(add);
             });
         </script>

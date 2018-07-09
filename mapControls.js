@@ -11,6 +11,15 @@ function addMarker(center, name){
     markers[name] = marker;
 }
 
+function getParadas(){
+    var url = "http://api.olhovivo.sptrans.com.br/v2.1/Parada/Buscar?termosBusca=*";
+    $.get( request, function( data ) {
+
+        console.log(data);
+
+    });
+}
+
 function removeMarker(name){
     markers[name].remove();
 }
