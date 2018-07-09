@@ -60,7 +60,9 @@
         <title>Soluções Web 2018 - MapView</title>
         <script	src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet'/>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="mapControls.js"></script>
+
         <style>
         
             body{
@@ -238,7 +240,7 @@
                 console.log('lon = '+ lon);
                 
                 mapboxgl.accessToken = 'pk.eyJ1IjoiYWJlbHJvZXMiLCJhIjoiY2pqZXA2N2luMDR4MzNwcXN6NjAzZWJwYiJ9.QNVjpd5OKTqsx76RLwpMjA';	
-                var	map	= new mapboxgl.Map({
+                map	= new mapboxgl.Map({
                     container: 'map',
                     style: 'mapbox://styles/mapbox/streets-v10',
                     center:	[lon, lat],
@@ -246,10 +248,7 @@
                  });	
 
                 map.addControl(new mapboxgl.NavigationControl());
-                
-                var	marker = new mapboxgl.Marker()
-                    .setLngLat([lon, lat])
-                    .addTo(map);
+                addMarker([lon, lat], "initial")
             };
             
             function showError(error) {
@@ -273,6 +272,10 @@
                 document.getElementById("paradaOnibus").disabled = true;
             }
             
+            $("#botaoBusca").on("click", function(e){
+                var add = $("#campoBusca").val() + ".json";
+                getAddress(add);
+            });
         </script>
     </body>
 </html>
