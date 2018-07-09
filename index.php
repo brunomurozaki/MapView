@@ -211,10 +211,10 @@
         
         <script>
             
-            document.getElementById("campoBusca").disabled = false;
+            /*document.getElementById("campoBusca").disabled = false;
             document.getElementById("botaoBusca").disabled = false;
             document.getElementById("onibusMov").disabled = false;
-            document.getElementById("paradaOnibus").disabled = false;
+            document.getElementById("paradaOnibus").disabled = false;*/
             
             if (navigator.geolocation) {
                 console.log('Geolocalização suportada!!! :)');
