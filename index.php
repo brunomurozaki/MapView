@@ -221,15 +221,16 @@
             }
             else {
                 console.log('Geolocalização não suportada. Aplicação não funcionará como devido.');
-                document.getElementById("campoBusca").disabled = true;
+                /*document.getElementById("campoBusca").disabled = true;
                 document.getElementById("botaoBusca").disabled = true;
                 document.getElementById("onibusMov").disabled = true;
-                document.getElementById("paradaOnibus").disabled = false;
+                document.getElementById("paradaOnibus").disabled = false;*/
             }
             
             
             navigator.geolocation.getCurrentPosition(render, showError);
             
+            render({coords: {latitude=-23.505630, longitude=-46.642090}}); //retirar esta linha
             
             function render(pos) {
                 var lat = pos.coords.latitude;
