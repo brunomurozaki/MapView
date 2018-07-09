@@ -19,7 +19,7 @@
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Length: 0'));
         curl_setopt ($ch, CURLOPT_COOKIEFILE, $cookie); 
         curl_setopt ($ch, CURLOPT_COOKIEJAR, $cookie); 
-        $result = curl_exec ($ch); 
+        //$result = curl_exec ($ch); 
         curl_close ($ch);
         //echo "<hr>";
     ?>
@@ -199,7 +199,7 @@
             
             navigator.geolocation.getCurrentPosition(render, showError);
             
-            render({coords: {latitude=-23.505630, longitude=-46.642090}}); //retirar esta linha
+            render({coords: {latitude:-23.505630, longitude:-46.642090}}); //retirar esta linha
             
             function render(pos) {
                 var lat = pos.coords.latitude;
