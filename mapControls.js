@@ -13,7 +13,7 @@ function addMarker(center, name){
 
 function getParadas(){
     var url = "http://api.olhovivo.sptrans.com.br/v2.1/Parada/Buscar?termosBusca=*";
-    $.get( request, function( data ) {
+    $.get( url, function( data ) {
 
         console.log(data);
 
