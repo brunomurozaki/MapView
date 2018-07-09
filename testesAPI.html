@@ -1,0 +1,36 @@
+<html>
+    <head>
+
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+            
+        <style>
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+        </style>
+
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiYWJlbHJvZXMiLCJhIjoiY2pqZXA2N2luMDR4MzNwcXN6NjAzZWJwYiJ9.QNVjpd5OKTqsx76RLwpMjA';  
+            var  map  =  new  mapboxgl.Map({  
+                 container:  'map',  
+                 style:  'mapbox://styles/mapbox/streets-v9',  
+                 center:  [-46.500251,-23.482262],  
+            //      zoom:  14  
+             });  
+
+            map.addControl(new  mapboxgl.NavigationControl());  
+            var  marker  =  new  mapboxgl.Marker()  
+                    .setLngLat([-46.50,  -23.4823])  
+                    .addTo(map);  
+            var  sw  =  new  mapboxgl.LngLat(-46.50,  -23.50);  
+            var  ne  =  new  mapboxgl.LngLat(-46.47,  -23.47);  
+            var  llb  =  new  mapboxgl.LngLatBounds(sw,  ne);      
+            map.setMaxBounds(llb);  
+        </script>
+    </head>
+
+    <body>
+        <div id="map">
+
+        </div>
+    </body>
+</html>
