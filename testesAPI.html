@@ -3,34 +3,53 @@
 
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
-            
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="mapControls.js"></script>
         <style>
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-        </style>
-
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoiYWJlbHJvZXMiLCJhIjoiY2pqZXA2N2luMDR4MzNwcXN6NjAzZWJwYiJ9.QNVjpd5OKTqsx76RLwpMjA';  
-            var  map  =  new  mapboxgl.Map({  
-                 container:  'map',  
-                 style:  'mapbox://styles/mapbox/streets-v9',  
-                 center:  [-46.500251,-23.482262],  
-            //      zoom:  14  
-             });  
-
-            map.addControl(new  mapboxgl.NavigationControl());  
-            var  marker  =  new  mapboxgl.Marker()  
-                    .setLngLat([-46.50,  -23.4823])  
-                    .addTo(map);  
-            var  sw  =  new  mapboxgl.LngLat(-46.50,  -23.50);  
-            var  ne  =  new  mapboxgl.LngLat(-46.47,  -23.47);  
-            var  llb  =  new  mapboxgl.LngLatBounds(sw,  ne);      
-            map.setMaxBounds(llb);  
-        </script>
+        #map { width:400px; height: 400px; float: left; }
+        #bt {float: left;}
+        </style>        
     </head>
 
     <body>
         <div id="map">
 
         </div>
+
+        <div id="bt">
+            <input type="text" id="address"/>
+            <button id="testeBt">teste endereço</button>
+        </div>
+
+        <div class="result">
+
+        </div>
+
+        <script>
+                $("#testeBt").on("click", function(e){
+                    var add = $("#address").val() + ".json";
+                    var request = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + add + "?access_token=" + mapboxgl.accessToken;
+
+                    $.get( request, function( data ) {
+                        var features = data.features;
+
+                        if(features[0].relevance == 1){
+                            map.setCenter(features[0].center);
+                            removeAllMarkers();
+                            addMarker(features[0].center, features[0].place_name);
+                        }
+
+                    });
+                });
+                mapboxgl.accessToken = 'pk.eyJ1IjoiYWJlbHJvZXMiLCJhIjoiY2pqZXA2N2luMDR4MzNwcXN6NjAzZWJwYiJ9.QNVjpd5OKTqsx76RLwpMjA';  
+                map  =  new  mapboxgl.Map({  
+                     container:  'map',  
+                     style:  'mapbox://styles/mapbox/streets-v9',  
+                     center:  [-46.500251,-23.482262],  
+                     zoom:  14  
+                 });  
+    
+                map.addControl(new  mapboxgl.NavigationControl());  
+            </script>
     </body>
 </html>
