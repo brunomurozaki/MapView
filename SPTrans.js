@@ -8,7 +8,7 @@ function loginSPTrans(){
     $.ajax({
         url: url,
         crossDomain: true,
-        data: form,
+        data: null,
         dataType: 'json',
         success: function(data) {
             console.log(data);
