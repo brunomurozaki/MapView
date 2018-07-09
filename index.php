@@ -266,10 +266,10 @@
                         console.log("An unknown error occurred.");
                         break;
                 }
-                document.getElementById("campoBusca").disabled = true;
+                /*document.getElementById("campoBusca").disabled = true;
                 document.getElementById("botaoBusca").disabled = true;
                 document.getElementById("onibusMov").disabled = true;
-                document.getElementById("paradaOnibus").disabled = true;
+                document.getElementById("paradaOnibus").disabled = true;*/
             }
             
             $("#botaoBusca").on("click", function(e){
