@@ -1,19 +1,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
-require_once 'vendor/autoload.php';
 
-$ops = array(
-	"profile" => "each",
-	"region" => "sa-east-1",
-	"version" => "latest"
-);
-
-// S3 bucket
-$clientS3 = new Aws\S3\S3Client($ops);
-$clientS3->registerStreamWrapper();
-
-$chave_api = file_get_contents('s3://each-api-sptrans/chave_sptrans.txt');
+$chave_api = "351cf23405f3af731712cbace009b8966406e073098e80b107a519132a7ba50c";
 
 $cookie = '/tmp/cookie.txt';
 $url = 'http://api.olhovivo.sptrans.com.br/v2.1';
@@ -29,6 +18,8 @@ curl_setopt ($ch, CURLOPT_COOKIEFILE, $cookie);
 curl_setopt ($ch, CURLOPT_COOKIEJAR, $cookie); 
 $result = curl_exec ($ch); 
 curl_close ($ch);
+echo "TESTE<br/>";
+echo $result;
 echo "<hr>";
 
 $ch = curl_init(); 
@@ -39,6 +30,8 @@ curl_setopt ($ch, CURLOPT_COOKIEFILE, $cookie);
 curl_setopt ($ch, CURLOPT_COOKIEJAR, $cookie); 
 $result = curl_exec ($ch); 
 curl_close ($ch);
+echo "TESTE<br/>";
+echo $result;
 echo "<hr>";
 
 exit;
