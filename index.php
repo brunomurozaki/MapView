@@ -18,8 +18,6 @@ curl_setopt ($ch, CURLOPT_COOKIEFILE, $cookie);
 curl_setopt ($ch, CURLOPT_COOKIEJAR, $cookie); 
 $result = curl_exec ($ch); 
 curl_close ($ch);
-echo "TESTE<br/>";
-echo $result;
 echo "<hr>";
 
 $ch = curl_init(); 
@@ -30,8 +28,6 @@ curl_setopt ($ch, CURLOPT_COOKIEFILE, $cookie);
 curl_setopt ($ch, CURLOPT_COOKIEJAR, $cookie); 
 $result = curl_exec ($ch); 
 curl_close ($ch);
-echo "TESTE<br/>";
-echo $result;
 echo "<hr>";
 
 exit;

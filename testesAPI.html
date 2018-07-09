@@ -1,0 +1,61 @@
+<html>
+    <head>
+
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="mapControls.js"></script>
+        <style>
+        #map { width:400px; height: 400px; float: left; }
+        #bt {float: left;}
+        </style>        
+    </head>
+
+    <body>
+        <div id="map">
+
+        </div>
+
+        <div id="bt">
+            <input type="text" id="address"/>
+            <button id="testeBt">teste endereço</button>
+        </div>
+
+        <ul class="itens">
+
+        </ul>
+
+
+
+        <script>
+                $("#testeBt").on("click", function(e){
+                    var add = $("#address").val() + ".json";
+                    var proximity="-46.642090, -23.505630"; //trocar pela localizacao
+                    var request = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + add + "?access_token=" + mapboxgl.accessToken + "&country=br&proximity=" + proximity;
+
+                    $.get( request, function( data ) {
+                        var features = data.features;
+
+                        if(features[0].relevance == 1){
+                            map.setCenter(features[0].center);
+                            removeAllMarkers();
+                            addMarker(features[0].center, features[0].place_name);
+                        } else {
+                            for(var i = 0; i < features.length; i++){
+                                
+                            }
+                        }
+                    });
+                });
+                mapboxgl.accessToken = 'pk.eyJ1IjoiYWJlbHJvZXMiLCJhIjoiY2pqZXA2N2luMDR4MzNwcXN6NjAzZWJwYiJ9.QNVjpd5OKTqsx76RLwpMjA';  
+                map  =  new  mapboxgl.Map({  
+                     container:  'map',  
+                     style:  'mapbox://styles/mapbox/streets-v9',  
+                     center:  [-46.500251,-23.482262],  
+                     zoom:  14  
+                 });  
+    
+                map.addControl(new  mapboxgl.NavigationControl());  
+            </script>
+    </body>
+</html>
