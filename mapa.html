@@ -250,6 +250,12 @@
                     document.getElementById("onibusMov").disabled = true;
                     document.getElementById("paradaOnibus").disabled = true;*/
                 }
+
+                $("#paradaOnibus").on("change", function(e){
+                    if($(this).is(':checked')){
+                        getParadas();
+                    }
+                });
                 
                 $("#botaoBusca").on("click", function(e){
                     var add = $("#campoBusca").val() + ".json";

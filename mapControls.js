@@ -13,11 +13,16 @@ function addMarker(center, name){
 }
 
 function getParadas(){
-    var url = "http://api.olhovivo.sptrans.com.br/v2.1/Parada/Buscar?termosBusca=*";
+    var url = "/?buscarPontos=";
+    var bounds = map.getBounds();
+
+    url += bounds._ne.lng+","+bounds._ne.lat+","+bounds._sw.lng+","+bounds._sw.lat;
+
     $.get( url, function( data ) {
-
+        data = data.replace("<!DOCTYPE html>", "");
+        data = data.replace("<html>", "");
+        data = JSON.parse(data);
         console.log(data);
-
     });
 }
 
