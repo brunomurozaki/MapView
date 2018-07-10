@@ -274,6 +274,7 @@
     
                     map.addControl(new mapboxgl.NavigationControl());
                     map.on('zoomend', function() {
+                        inZoom = true;
                         if($("#paradaOnibus").is(':checked')){
                            getParadas();
                         }
@@ -284,12 +285,16 @@
                     });
 
                     map.on('moveend', function() {
-                        if($("#paradaOnibus").is(':checked')){
-                           getParadas();
-                        }
+                        if(!inZoom){
+                            if($("#paradaOnibus").is(':checked')){
+                                getParadas();
+                            }
 
-                        if($("#onibusMov").is(':checked')){
-                            getPosicao();
+                            if($("#onibusMov").is(':checked')){
+                                getPosicao();
+                            }
+                        } else {
+                            inZoom = false;
                         }
                     });
                     //addMarker([lon, lat], "initial")

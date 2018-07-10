@@ -1,6 +1,6 @@
 /*Map controls*/
 
-markers = {};
+markers = [];
 proximity = "-46.642090, -23.505630"; //Alterar com o 
 possibleAddresses = {};
 
@@ -24,8 +24,8 @@ function addMarker(center, name, type){
                                 .setLngLat(center)
                                 .setPopup(new mapboxgl.Popup({ offset: 25 })) 
                                 .addTo(map);  
-    markers[name] = marker;
-    return markers[name];
+    markers.push(marker);
+    return marker;
 }
 
 function getParadas(){
@@ -111,14 +111,9 @@ function AddStopMarkers(data){
     }
 }
 
-function removeMarker(name){
-    markers[name].remove();
-}
-
 function removeAllMarkers(){
-    var arr = Object.keys(markers);
-    for(var i = 0; i < arr.length; i++){
-        markers[arr[i]].remove();
+    for(var i = 0; i < markers.length; i++){
+        markers[i].remove();
     }
 }
 
