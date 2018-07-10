@@ -282,6 +282,16 @@
                             getPosicao();
                         }
                     });
+
+                    map.on('moveend', function() {
+                        if($("#paradaOnibus").is(':checked')){
+                           getParadas();
+                        }
+
+                        if($("#onibusMov").is(':checked')){
+                            getPosicao();
+                        }
+                    });
                     //addMarker([lon, lat], "initial")
                     
                     
