@@ -6,6 +6,7 @@
         $loginURL = 'http://api.olhovivo.sptrans.com.br/v2.1/Login/Autenticar?token=351cf23405f3af731712cbace009b8966406e073098e80b107a519132a7ba50c';
 
         function GetParadas($input){
+            //header('Content-Type: application/json');
             $chave_api = "351cf23405f3af731712cbace009b8966406e073098e80b107a519132a7ba50c";
             $loginURL = 'http://api.olhovivo.sptrans.com.br/v2.1/Login/Autenticar?token=351cf23405f3af731712cbace009b8966406e073098e80b107a519132a7ba50c';
             $ch = curl_init(); 
