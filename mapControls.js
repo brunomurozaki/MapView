@@ -77,6 +77,11 @@ function limpaPosicao(){
     posicao = [];
 }
 
+function limpaTudo(){
+    limpaPosicao();
+    limpaParadas();
+}
+
 function AddStopMarkers(data){
     var bounds = map.getBounds();
     var stopInBounds = [];
