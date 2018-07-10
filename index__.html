@@ -8,6 +8,53 @@
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet'/>
         
         <style>
+            
+            .markerAz {
+              background-image: url('./mkAzul.png');
+              background-size: cover;
+              width: 46px;
+              height: 46px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            
+            .markerPt {
+              background-image: url('./mkPreto.png');
+              background-size: cover;
+              width: 46px;
+              height: 46px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            
+            .markerRx {
+              background-image: url('./mkRoxo.png');
+              background-size: cover;
+              width: 46px;
+              height: 46px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            
+            .markerLr {
+              background-image: url('./mkLaranja.png');
+              background-size: cover;
+              width: 46px;
+              height: 46px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            
+            .mapboxgl-popup {
+              max-width: 200px;
+            }
+
+            .mapboxgl-popup-content {
+              text-align: center;
+              font-family: 'Open Sans', sans-serif;
+            }
+            
+            
         
             body{
                 font-family: Tahoma;
@@ -215,8 +262,17 @@
 
                 map.addControl(new mapboxgl.NavigationControl());
                 
-                var	marker = new mapboxgl.Marker()
+                var el = document.createElement('div');
+                el.className = 'markerAz';
+                
+                var	marker = new mapboxgl.Marker(el)
                     .setLngLat([lon, lat])
+                    //.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                    //.setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                    .setHTML('<h3>Nome desse Lugar!</h3><p>Fica nessa rua aqui ó...</p>'))
+                
                     .addTo(map);
             };
             
