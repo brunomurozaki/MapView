@@ -9,8 +9,54 @@
             <script src="mapControls.js"></script>
     
             <style>
+                .markerAz {
+              background-image: url('./mkAzul.png');
+              background-size: cover;
+              width: 46px;
+              height: 46px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
             
-                body{
+            .markerPt {
+              background-image: url('./mkPreto.png');
+              background-size: cover;
+              width: 46px;
+              height: 46px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            
+            .markerRx {
+              background-image: url('./mkRoxo.png');
+              background-size: cover;
+              width: 46px;
+              height: 46px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            
+            .markerLr {
+              background-image: url('./mkLaranja.png');
+              background-size: cover;
+              width: 46px;
+              height: 46px;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            
+            .mapboxgl-popup {
+              max-width: 200px;
+            }
+
+            .mapboxgl-popup-content {
+              text-align: center;
+              font-family: 'Tahoma', sans-serif;
+            }
+                
+                
+            
+            body{
                 font-family: Tahoma;
                 background-image: url(./bgWallpaper.jpg);
                 background-repeat: repeat;
@@ -123,6 +169,7 @@
             
             #endSuggest a{
                 color: blue;
+                cursor: pointer;
             }
                 
             h1#sugestoes{
@@ -226,7 +273,23 @@
                         });	
     
                     map.addControl(new mapboxgl.NavigationControl());
-                    addMarker([lon, lat], "initial")
+                    //addMarker([lon, lat], "initial")
+                    
+                    
+                    //Marker Funcionando Aqui!!!
+                    var el = document.createElement('div');
+                    el.className = 'markerAz';
+                
+                    var	marker = new mapboxgl.Marker(el)
+                        .setLngLat([lon, lat])
+                            //.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                            //.setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                        .setHTML('<h3>Nome desse Lugar!</h3><p>Fica nessa rua aqui ó...</p>'))
+                        .addTo(map);
+                    
+                    
+                    
                 };
                 
                 function showError(error) {
