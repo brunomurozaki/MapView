@@ -104,8 +104,6 @@ function limpaTudo(){
     $("#sugestoes").css("display", "none");
     $("#endSuggest").empty();
     
-//    limpaPosicao();
-//    limpaParadas();
 }
 
 function AddStopMarkers(data){
