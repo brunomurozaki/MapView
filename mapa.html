@@ -48,7 +48,6 @@
             .mapboxgl-popup {
               max-width: 200px;
             }
-
             .mapboxgl-popup-content {
               text-align: center;
               font-family: 'Tahoma', sans-serif;
@@ -178,6 +177,20 @@
                 font-size: 12px;
                 margin-top: 15px;
             }
+            
+            #btnRefresh{
+                background-image: url(refresh.png);
+                background-size: 40px;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-right: 0px;
+                margin-left: auto;
+                display: block;
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
                 
             </style>
             
@@ -230,6 +243,8 @@
                 </div>
                 
                 <div id='map'></div>
+                
+                <div id="btnRefresh" onclick="limpaTudo()" alt="Limpar mapa"></div>
                 
             </div>
             

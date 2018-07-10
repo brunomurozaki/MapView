@@ -91,7 +91,7 @@
                 height: 450px;
                 margin-left: auto;
                 margin-right: auto;
-                margin-bottom: 25px;
+                margin-bottom: 0px;
             }
             
             .divEsq{
@@ -169,6 +169,20 @@
                 text-decoration: none;
             }
             
+            #btnRefresh{
+                background-image: url(refresh.png);
+                background-size: 40px;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-right: 0px;
+                margin-left: auto;
+                display: block;
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            
         </style>
         
     </head>
@@ -219,6 +233,8 @@
             </div>
             
             <div id='map'></div>
+            
+            <div id="btnRefresh" onclick="limpaTudo()" alt="Limpar mapa"></div>
             
         </div>
         
