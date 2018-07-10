@@ -52,6 +52,10 @@ function getAddress(address){
             //var dataList = $(document.getElementById('endSuggest'));
             //var option;
             
+            if(features.length > 0){
+                $("#sugestoes").display("block");
+            }
+            
             for(var i = 0; i < features.length; i++){
                 li = $(document.createElement("li"));
                 a = $(document.createElement("a"));

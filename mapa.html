@@ -11,101 +11,124 @@
             <style>
             
                 body{
-                    font-family: Tahoma;
-                    background-image: url(./bgWallpaper.jpg);
-                    background-repeat: repeat;
-                    background-size: 40%;
-                }
+                font-family: Tahoma;
+                background-image: url(./bgWallpaper.jpg);
+                background-repeat: repeat;
+                background-size: 40%;
+            }
+            
+            #header{
+                width: 716px;
+                height: 100px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 15px;
+                padding: 10px 15px;
+            }
+            
+            #wrapper{
+                width: 750px;
+                height: 100%; 
+                padding: 0px;
+                margin-top: 15px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: white;
+                border-radius: 25px;
+                border-width: 2px;
+                border-style: solid;
+                border-color: black;
+            }
+            
+            #map{
+                width: 700px;
+                height: 450px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 25px;
+            }
+            
+            .divEsq{
+                position: relative;
+                float: left;
+            }
+            
+            .divDir{
+                position: relative;
+                float: right;
+            }
+            
+            .divLarg65{
+                position: relative;
+                width: 65%;
+            }
+            
+            .divLarg35{
+                position: relative;
+                width: 35%;
+            }
+            
+            .divMrgLeft15{
+                margin-left: 15px;
+            }
+            
+            #idMembros{
                 
-                #header{
-                    width: 716px;
-                    height: 100px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    margin-bottom: 15px;
-                    padding: 10px 15px;
-                }
+            }
+            
+            #controles{
+                margin-right: 25px;
+            }
+            
+            #idMembros h1{
+                font-size: 14px;
+            }
+            
+            #idMembros p{
+                margin-left: 15px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-size: 12px;
                 
-                #wrapper{
-                    width: 750px;
-                    height: 100%; 
-                    padding: 0px;
-                    margin-top: 15px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    background-color: white;
-                    border-radius: 25px;
-                    border-width: 2px;
-                    border-style: solid;
-                    border-color: black;
-                }
+            }
+            
+            #campoBusca{
+                width: 330px;
+            }
+            
+            #controles p{
+                margin-left: 15px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-size: 12px;
+            }
+            
+            #controles h1{
+                font-size: 14px;
+            }
+            
+            #endSuggest{
+                /*width: 330px;*/
+                padding-left: 20px;
+                margin-bottom: 0px;
+            }
+            
+            #endSuggest li{
+                width: 215px;
+                font-size: 10px;
+                list-style: square;
+                font-style: italic;
+            }
+            
+            #endSuggest a{
                 
-                #map{
-                    width: 700px;
-                    height: 450px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    margin-bottom: 25px;
-                }
+            }
                 
-                .divEsq{
-                    position: relative;
-                    float: left;
-                }
-                
-                .divDir{
-                    position: relative;
-                    float: right;
-                }
-                
-                .divLarg65{
-                    position: relative;
-                    width: 65%;
-                }
-                
-                .divLarg35{
-                    position: relative;
-                    width: 35%;
-                }
-                
-                .divMrgLeft15{
-                    margin-left: 15px;
-                }
-                
-                #idMembros{
-                    
-                }
-                
-                #controles{
-                    margin-right: 25px;
-                }
-                
-                #idMembros h1{
-                    font-size: 14px;
-                }
-                
-                #idMembros p{
-                    margin-left: 15px;
-                    margin-top: 10px;
-                    margin-bottom: 10px;
-                    font-size: 12px;
-                    
-                }
-                
-                #campoBusca{
-                    width: 330px;
-                }
-                
-                #controles p{
-                    margin-left: 15px;
-                    margin-top: 10px;
-                    margin-bottom: 10px;
-                    font-size: 12px;
-                }
-                
-                #controles h1{
-                    font-size: 14px;
-                }
+            h1 #sugestoes{
+                display: none;
+                font-style: italic;
+                font-size: 12px;
+            }
                 
             </style>
             
@@ -123,25 +146,30 @@
                                 <input list="endSuggest" id="campoBusca" type="search" name="campoBusca"
                                     placeholder="Digite aqui o endereço..."
                                     aria-label="Buscar Endereço."/>
-                                <datalist id="endSuggest">
-                                </datalist>
-                            </div>
-                            <div class="divEsq" style="margin-left: 15px;">
-                                <button id="botaoBusca">Buscar!</button>
-                            </div>
-                            
+                                <!--<datalist id="endSuggest">
+                            </datalist>-->
                             <br/>
-                            
-                            <div class="divMrgLeft15">
-                                <p>
-                                    <input id="onibusMov" type="checkbox" name="onibusMov" value="onibusMov"/> Ônibus em movimento
-                                </p>
-                                <p>
-                                    <input id="paradaOnibus" type="checkbox" name="paradaOnibus" value="paradaOnibus"/> Parada de ônibus
-                                </p>
-                            </div>
+                        </div>
+                        <div class="divEsq" style="margin-left: 15px;">
+                            <button id="botaoBusca">Buscar!</button>
+                        </div>
+                        
+                        <div class="divMrgLeft15 divEsq">
+                            <p>
+                                <input id="onibusMov" type="checkbox" name="onibusMov" value="onibusMov"/> Ã”nibus em movimento
+                            </p>
+                            <p>
+                                <input id="paradaOnibus" type="checkbox" name="paradaOnibus" value="paradaOnibus"/> Parada de Ã´nibus
+                            </p>
                         </div>
                     </div>
+                    
+                    <div class="divMrgLeft15 divEsq">
+                        <h1 id="sugestoes">Você quis dizer...</h1>
+                        <ul id="endSuggest">
+                        </ul>
+                    </div>
+                </div>
                     <div class="divDir divLarg35">
                         <div id="idMembros">
                             <h1>Integrantes do Grupo:</h1>
