@@ -57,6 +57,13 @@ function getAddress(address){
             //var dataList = $(document.getElementById('endSuggest'));
             //var option;
             
+            if(features.length > 0){
+                $("#endSuggest").empty();
+                $("#sugestoes").css("display", "block");
+            } else {
+                $("#sugestoes").css("display", "none");
+            }
+            
             for(var i = 0; i < features.length; i++){
                 li = $(document.createElement("li"));
                 a = $(document.createElement("a"));
