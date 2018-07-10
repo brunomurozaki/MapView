@@ -92,8 +92,16 @@ function limpaPosicao(){
 }
 
 function limpaTudo(){
-    limpaPosicao();
-    limpaParadas();
+    if($("#paradaOnibus").is(':checked')){
+       getParadas();
+    }
+
+    if($("#onibusMov").is(':checked')){
+        getPosicao();
+    }
+    
+//    limpaPosicao();
+//    limpaParadas();
 }
 
 function AddStopMarkers(data){
