@@ -67,7 +67,7 @@ function getAddress(address){
                     positionMapByFeature(possibleAddresses[e.data.name]);
                 });
                 
-                dataList.appendChild(option);
+                dataList.append(option);
 
                 //li.append(a);
                 //ul.append(li);
