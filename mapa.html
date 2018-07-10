@@ -273,6 +273,15 @@
                         });	
     
                     map.addControl(new mapboxgl.NavigationControl());
+                    map.on('zoom', function() {
+                        if($("#paradaOnibus").is(':checked')){
+                           getParadas();
+                        }
+
+                        if($("#onibusMov").is(':checked')){
+                           
+                        }
+                    });
                     //addMarker([lon, lat], "initial")
                     
                     
@@ -318,10 +327,9 @@
                         getParadas();
                     }
                 });
-                
+
                 $("#botaoBusca").on("click", function(e){
                     var add = $("#campoBusca").val() + ".json";
-                    getParadas();
                     getAddress(add);
                 });
             </script>
