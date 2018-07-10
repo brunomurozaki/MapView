@@ -47,31 +47,32 @@ function getAddress(address){
         if(features[0].relevance == 1){
             positionMapByFeature(features[0]);
         } else {
-            //var li, a, ul=$(".itens");
+            var li, a, ul=$("#endSuggest");
             
-            var dataList = $(document.getElementById('endSuggest'));
-            var option;
+            //var dataList = $(document.getElementById('endSuggest'));
+            //var option;
             
             for(var i = 0; i < features.length; i++){
-                /*li = $(document.createElement("li"));
+                li = $(document.createElement("li"));
                 a = $(document.createElement("a"));
                 
                 a.html(features[i].place_name);
                 possibleAddresses[features[i].place_name] = features[i];
-                */
                 
+                /*
                 option = $(document.createElement('option'));
                 option.val(features[i].place_name);
+                */
                 
-                option.on("click", {name: features[i].place_name}, function(e){
+                a.on("click", {name: features[i].place_name}, function(e){
                     positionMapByFeature(possibleAddresses[e.data.name]);
                 });
                 
-                dataList.append(option);
+                //dataList.append(option);
 
-                //li.append(a);
-                //ul.append(li);
-                //$(".result").append(JSON.stringify(features[i]));
+                li.append(a);
+                ul.append(li);
+                $(".result").append(JSON.stringify(features[i]));
             }
         }
     });

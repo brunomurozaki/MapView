@@ -106,6 +106,22 @@
                 font-size: 14px;
             }
             
+            #endSuggest{
+                /*width: 330px;*/
+                padding-left: 20px;
+                margin-bottom: 0px;
+            }
+            
+            #endSuggest li{
+                width: 215px;
+                font-size: 12px;
+                list-style: square;
+            }
+            
+            #endSuggest a{
+                text-decoration: none;
+            }
+            
         </style>
         
     </head>
@@ -116,23 +132,21 @@
             
             <div id="header">
                 <div class="divEsq divLarg65">
-                    <form id="controles">
+                    <div id="controles">
                         <h1>Buscar Endereço:</h1>
                         <div class="divEsq divMrgLeft15">
                             <input list="endSuggest" id="campoBusca" type="search" name="campoBusca"
                                placeholder="Digite aqui o endereço..."
                                aria-label="Buscar Endereço.">
-                            <datalist id="endSuggest">
-                                <option value="Internet Explorer">
-                            </datalist>
+                            <!--<datalist id="endSuggest">
+                            </datalist>-->
+                            <br/>
                         </div>
                         <div class="divEsq" style="margin-left: 15px;">
                             <button id="botaoBusca">Buscar!</button>
                         </div>
                         
-                        <br/>
-                        
-                        <div class="divMrgLeft15">
+                        <div class="divMrgLeft15 divEsq">
                             <p>
                                 <input id="onibusMov" type="checkbox" name="onibusMov" value="onibusMov"/> Ônibus em movimento
                             </p>
@@ -140,7 +154,12 @@
                                 <input id="paradaOnibus" type="checkbox" name="paradaOnibus" value="paradaOnibus"/> Parada de ônibus
                             </p>
                         </div>
-                    </form>
+                    </div>
+                    
+                    <div class="divMrgLeft15 divEsq">
+                        <ul id="endSuggest">
+                        </ul>
+                    </div>
                 </div>
                 <div class="divDir divLarg35">
                     <div id="idMembros">

@@ -147,16 +147,15 @@
                             <input list="endSuggest" id="campoBusca" type="search" name="campoBusca"
                                placeholder="Digite aqui o endereço..."
                                aria-label="Buscar Endereço."/>
-                            <datalist id="endSuggest">
-                            </datalist>
+                            <!--<datalist id="endSuggest">
+                            </datalist>-->
+                            <br/>
                         </div>
                         <div class="divEsq" style="margin-left: 15px;">
                             <button id="botaoBusca">Buscar!</button>
                         </div>
                         
-                        <br/>
-                        
-                        <div class="divMrgLeft15">
+                        <div class="divMrgLeft15 divEsq">
                             <p>
                                 <input id="onibusMov" type="checkbox" name="onibusMov" value="onibusMov"/> Ônibus em movimento
                             </p>
@@ -164,6 +163,11 @@
                                 <input id="paradaOnibus" type="checkbox" name="paradaOnibus" value="paradaOnibus"/> Parada de ônibus
                             </p>
                         </div>
+                    </div>
+                    
+                    <div class="divMrgLeft15 divEsq">
+                        <ul id="endSuggest">
+                        </ul>
                     </div>
                 </div>
                 <div class="divDir divLarg35">
