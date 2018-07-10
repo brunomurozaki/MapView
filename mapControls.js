@@ -26,6 +26,31 @@ function getParadas(){
     });
 }
 
+function getPosicao(){
+    var url = "/posicao.php?buscarOnibus=";
+    var bounds = map.getBounds();
+
+    url += bounds._ne.lng+","+bounds._ne.lat+","+bounds._sw.lng+","+bounds._sw.lat;
+
+    $.get( url, function( data ) {
+        data = JSON.parse(data);
+        var i,j=0;
+        var result = [];
+        for(i = 0 ;i < data.l.length ; i++){
+            var array = data.l[i].vs
+            for(j = 0 ; j < array.length ; j++){
+                var position = array[j]
+                if(position.px <= bounds._ne.lng && position.px >= bounds._sw.lng
+                    && position.py <= bounds._ne.lat && position.py >= bounds._sw.lat){
+                    addMarker([position.px, position.py], data.l[i].lt0)
+                    result.push(position);
+                }
+            }
+        }
+        console.log(result);
+    });
+}
+
 function AddStopMarkers(data){
     var bounds = map.getBounds();
     var stopsInBound = [];
