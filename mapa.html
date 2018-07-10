@@ -273,7 +273,7 @@
                         });	
     
                     map.addControl(new mapboxgl.NavigationControl());
-                    map.on('zoom', function() {
+                    map.on('zoomend', function() {
                         if($("#paradaOnibus").is(':checked')){
                            getParadas();
                         }
