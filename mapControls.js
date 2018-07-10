@@ -17,7 +17,7 @@ function addMarker(center, name, type){
     } else if(type == "posicao") {
         el.className = "markerRx";
     } else {
-        el.className = "markerPt";
+        el.className = "markerAz";
     }
 
     var  marker  =  new  mapboxgl.Marker(el)  
