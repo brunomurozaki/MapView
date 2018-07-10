@@ -325,15 +325,18 @@
                 $("#paradaOnibus").on("change", function(e){
                     if($(this).is(':checked')){
                         getParadas();
+                    } else {
+                        limpaParadas();
                     }
                 });
 
                 $("#onibusMov").on("change", function(e){
                     if($(this).is(':checked')){
                         getPosicao();
+                    } else {
+                        limpaPosicao();
                     }
                 });
-
 
                 $("#botaoBusca").on("click", function(e){
                     var add = $("#campoBusca").val() + ".json";

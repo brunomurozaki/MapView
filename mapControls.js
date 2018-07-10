@@ -4,15 +4,20 @@ markers = {};
 proximity = "-46.642090, -23.505630"; //Alterar com o 
 possibleAddresses = {};
 
+posicao = [];
+paradas = [];
+
 
 function addMarker(center, name){
     var  marker  =  new  mapboxgl.Marker()  
                                 .setLngLat(center)  
                                 .addTo(map);  
     markers[name] = marker;
+    return markers[name];
 }
 
 function getParadas(){
+    limpaParadas();
     var url = "/?buscarPontos=";
     var bounds = map.getBounds();
 
@@ -26,8 +31,12 @@ function getParadas(){
     });
 }
 
+
+
 function getPosicao(){
+    limpaPosicao();
     var url = "/posicao.php?buscarOnibus=";
+
     var bounds = map.getBounds();
 
     url += bounds._ne.lng+","+bounds._ne.lat+","+bounds._sw.lng+","+bounds._sw.lat;
@@ -36,35 +45,53 @@ function getPosicao(){
         data = JSON.parse(data);
         var i,j=0;
         var result = [];
+        posicao = [];
         for(i = 0 ;i < data.l.length ; i++){
             var array = data.l[i].vs
             for(j = 0 ; j < array.length ; j++){
                 var position = array[j]
                 if(position.px <= bounds._ne.lng && position.px >= bounds._sw.lng
                     && position.py <= bounds._ne.lat && position.py >= bounds._sw.lat){
-                    addMarker([position.px, position.py], data.l[i].lt0)
                     result.push(position);
+                    posicao.push(addMarker([position.px, position.py], data.l[i].lt0));
                 }
             }
         }
-        console.log(result);
+        //console.log(posicao);
     });
+}
+
+function limpaParadas(){
+    for(var i = 0; i < paradas.length; i++){
+        paradas[i].remove();
+    }
+
+    paradas = [];
+}
+
+function limpaPosicao(){
+    for(var i = 0; i < posicao.length; i++){
+        posicao[i].remove();
+    }
+
+    posicao = [];
 }
 
 function AddStopMarkers(data){
     var bounds = map.getBounds();
-    var stopsInBound = [];
+    var stopInBounds = [];
+    paradas = [];
     var parada;
 
     for(var i = 0; i < data.length; i++){
         parada = data[i];
         if(bounds._ne.lng > parada.px && bounds._sw.lng < parada.px && bounds._ne.lat > parada.py && bounds._sw.lat < parada.py){
-            stopsInBound[stopsInBound.length] = parada;
+            stopInBounds[stopInBounds.length] = parada;
         }
     }
 
-    for(var i = 0; i < stopsInBound.length; i++){
-        addMarker([stopsInBound[i].px, stopsInBound[i].py], stopsInBound[i].ed + stopsInBound[i].cp);
+    for(var i = 0; i < stopInBounds.length; i++){
+        paradas[paradas.length] = addMarker([stopInBounds[i].px, stopInBounds[i].py], stopInBounds[i].ed + stopInBounds[i].cp);
     }
 }
 
