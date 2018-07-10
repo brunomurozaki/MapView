@@ -94,10 +94,14 @@ function limpaPosicao(){
 function limpaTudo(){
     if($("#paradaOnibus").is(':checked')){
        getParadas();
+    } else {
+        limpaParadas();
     }
 
     if($("#onibusMov").is(':checked')){
         getPosicao();
+    } else {
+        limpaPosicao();
     }
     
     $("#campoBusca").val("");
