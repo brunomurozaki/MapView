@@ -21,7 +21,8 @@ function addMarker(center, name, type){
     }
 
     var  marker  =  new  mapboxgl.Marker(el)  
-                                .setLngLat(center)  
+                                .setLngLat(center)
+                                .setPopup(new mapboxgl.Popup({ offset: 25 })) 
                                 .addTo(map);  
     markers[name] = marker;
     return markers[name];
@@ -64,7 +65,8 @@ function getPosicao(){
                 if(position.px <= bounds._ne.lng && position.px >= bounds._sw.lng
                     && position.py <= bounds._ne.lat && position.py >= bounds._sw.lat){
                     result.push(position);
-                    posicao.push(addMarker([position.px, position.py], data.l[i].lt0, "posicao"));
+                    var pos = addMarker([position.px, position.py], data.l[i].lt0, "posicao");
+                    posicao.push(pos);
                 }
             }
         }
@@ -102,7 +104,9 @@ function AddStopMarkers(data){
     }
 
     for(var i = 0; i < stopInBounds.length; i++){
-        paradas[paradas.length] = addMarker([stopInBounds[i].px, stopInBounds[i].py], stopInBounds[i].ed + stopInBounds[i].cp, "ponto");
+        var stop = addMarker([stopInBounds[i].px, stopInBounds[i].py], stopInBounds[i].ed + stopInBounds[i].cp, "ponto");
+        stop.getPopup().setHTML("<h3>" + stopInBounds[i].np + "</h3><p>" + stopInBounds[i].ed + "</p>");
+        paradas[paradas.length] = stop;
     }
 }
 
@@ -120,7 +124,8 @@ function removeAllMarkers(){
 function positionMapByFeature(feature){
     map.setCenter(feature.center);
     removeAllMarkers();
-    addMarker(feature.center, feature.place_name);
+    var marker = addMarker(feature.center, feature.place_name);
+    marker.setHTML(feature.place_name);
 }
 
 function getAddress(address){
