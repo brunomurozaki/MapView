@@ -279,7 +279,7 @@
                         }
 
                         if($("#onibusMov").is(':checked')){
-                           
+                            getPosicao();
                         }
                     });
                     //addMarker([lon, lat], "initial")
@@ -327,6 +327,13 @@
                         getParadas();
                     }
                 });
+
+                $("#onibusMov").on("change", function(e){
+                    if($(this).is(':checked')){
+                        getPosicao();
+                    }
+                });
+
 
                 $("#botaoBusca").on("click", function(e){
                     var add = $("#campoBusca").val() + ".json";
