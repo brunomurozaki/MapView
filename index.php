@@ -161,9 +161,11 @@
                     <div id="controles">
                         <h1>Buscar Endereço:</h1>
                         <div class="divEsq divMrgLeft15">
-                            <input id="campoBusca" type="search" name="campoBusca"
+                            <input list="endSuggest" id="campoBusca" type="search" name="campoBusca"
                                placeholder="Digite aqui o endereço..."
                                aria-label="Buscar Endereço."/>
+                            <datalist id="endSuggest">
+                            </datalist>
                         </div>
                         <div class="divEsq" style="margin-left: 15px;">
                             <button id="botaoBusca">Buscar!</button>

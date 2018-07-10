@@ -59,14 +59,15 @@ function getAddress(address){
                 a.html(features[i].place_name);
                 possibleAddresses[features[i].place_name] = features[i];
                 */
+                
                 option = $(document.createElement('option'));
-                option.value = features[i].place_name;
+                option.val(features[i].place_name);
                 
                 option.on("click", {name: features[i].place_name}, function(e){
                     positionMapByFeature(possibleAddresses[e.data.name]);
                 });
                 
-                dataList.appendChild(option);
+                dataList.append(option);
 
                 //li.append(a);
                 //ul.append(li);
