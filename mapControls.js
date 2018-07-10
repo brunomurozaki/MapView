@@ -100,6 +100,9 @@ function limpaTudo(){
         getPosicao();
     }
     
+    $("#campoBusca").val("");
+    $("#sugestoes").css("display", "none");
+    
 //    limpaPosicao();
 //    limpaParadas();
 }
