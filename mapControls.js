@@ -53,7 +53,10 @@ function getAddress(address){
             //var option;
             
             if(features.length > 0){
+                $("#sugestoes").empty;
                 $("#sugestoes").css("display", "block");
+            } else {
+                $("#sugestoes").css("display", "none");
             }
             
             for(var i = 0; i < features.length; i++){
