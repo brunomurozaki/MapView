@@ -49,7 +49,7 @@ function getAddress(address){
         } else {
             //var li, a, ul=$(".itens");
             
-            var dataList = document.getElementById('endSuggest');
+            var dataList = $(document.getElementById('endSuggest'));
             var option;
             
             for(var i = 0; i < features.length; i++){
@@ -59,8 +59,9 @@ function getAddress(address){
                 a.html(features[i].place_name);
                 possibleAddresses[features[i].place_name] = features[i];
                 */
-                option = document.createElement('option');
-                option.value = features[i].place_name;
+                
+                option = $(document.createElement('option'));
+                option.val(features[i].place_name);
                 
                 option.on("click", {name: features[i].place_name}, function(e){
                     positionMapByFeature(possibleAddresses[e.data.name]);
