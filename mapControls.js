@@ -66,6 +66,7 @@ function getPosicao(){
                     && position.py <= bounds._ne.lat && position.py >= bounds._sw.lat){
                     result.push(position);
                     var pos = addMarker([position.px, position.py], data.l[i].lt0, "posicao");
+                    pos.getPopup().setHTML("<h2>" + data.l[i].c + "</h2><p>" + data.l[i].lt0 + " - " + data.l[i].lt1 + "</p>")
                     posicao.push(pos);
                 }
             }
