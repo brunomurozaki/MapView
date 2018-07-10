@@ -38,7 +38,7 @@ function AddStopMarkers(data){
         }
     }
 
-    for(var i = 0; i < stopsInBound.lenght; i++){
+    for(var i = 0; i < stopsInBound.length; i++){
         addMarker([stopsInBound[i].px, stopsInBound[i].py], stopsInBound[i].ed + stopsInBound[i].cp);
     }
 }
