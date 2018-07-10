@@ -48,43 +48,66 @@ function getAddress(address){
 
     $.get( request, function( data ) {
         var features = data.features;
+        
+        if(features.length > 0){
 
-        if(features[0].relevance == 1){
-            positionMapByFeature(features[0]);
-        } else {
-            var li, a, ul=$("#endSuggest");
-            
-            //var dataList = $(document.getElementById('endSuggest'));
-            //var option;
-            
-            if(features.length > 0){
-                $("#endSuggest").empty();
-                $("#sugestoes").css("display", "block");
+            if(features[0].relevance == 1){
+                if(features.length > 1){
+
+                    var li, a, ul=$("#endSuggest");
+
+                    if(features.length > 0){
+                        $("#endSuggest").empty();
+                        $("#sugestoes").val("Você quis dizer...");
+                        $("#sugestoes").css("display", "block");
+                    } else {
+                        $("#sugestoes").css("display", "none");
+                    }
+
+                    for(var i = 0; i < features.length; i++){
+                        li = $(document.createElement("li"));
+                        a = $(document.createElement("a"));
+
+                        a.html(features[i].place_name);
+                        possibleAddresses[features[i].place_name] = features[i];
+
+                        a.on("click", {name: features[i].place_name}, function(e){
+                            positionMapByFeature(possibleAddresses[e.data.name]);
+                        });
+
+                        li.append(a);
+                        ul.append(li);
+                        $(".result").append(JSON.stringify(features[i]));
+                    }
+                } else {
+                    positionMapByFeature(features[0]);
+                }
             } else {
-                $("#sugestoes").css("display", "none");
-            }
-            
-            for(var i = 0; i < features.length; i++){
-                li = $(document.createElement("li"));
-                a = $(document.createElement("a"));
-                
-                a.html(features[i].place_name);
-                possibleAddresses[features[i].place_name] = features[i];
-                
-                /*
-                option = $(document.createElement('option'));
-                option.val(features[i].place_name);
-                */
-                
-                a.on("click", {name: features[i].place_name}, function(e){
-                    positionMapByFeature(possibleAddresses[e.data.name]);
-                });
-                
-                //dataList.append(option);
+                var li, a, ul=$("#endSuggest");
 
-                li.append(a);
-                ul.append(li);
-                $(".result").append(JSON.stringify(features[i]));
+                if(features.length > 0){
+                    $("#endSuggest").empty();
+                    $("#sugestoes").val("Você quis dizer...");
+                    $("#sugestoes").css("display", "block");
+                } else {
+                    $("#sugestoes").css("display", "none");
+                }
+
+                for(var i = 0; i < features.length; i++){
+                    li = $(document.createElement("li"));
+                    a = $(document.createElement("a"));
+
+                    a.html(features[i].place_name);
+                    possibleAddresses[features[i].place_name] = features[i];
+
+                    a.on("click", {name: features[i].place_name}, function(e){
+                        positionMapByFeature(possibleAddresses[e.data.name]);
+                    });
+
+                    li.append(a);
+                    ul.append(li);
+                    $(".result").append(JSON.stringify(features[i]));
+                }
             }
         }
     });
