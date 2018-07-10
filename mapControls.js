@@ -8,8 +8,19 @@ posicao = [];
 paradas = [];
 
 
-function addMarker(center, name){
-    var  marker  =  new  mapboxgl.Marker()  
+function addMarker(center, name, type){
+
+    var el = document.createElement("div");
+
+    if(type == "ponto"){
+        el.className = "markerLr";    
+    } else if(type == "posicao") {
+        el.className = "markerRx";
+    } else {
+        el.className = "markerAz";
+    }
+
+    var  marker  =  new  mapboxgl.Marker(el)  
                                 .setLngLat(center)  
                                 .addTo(map);  
     markers[name] = marker;
@@ -53,7 +64,7 @@ function getPosicao(){
                 if(position.px <= bounds._ne.lng && position.px >= bounds._sw.lng
                     && position.py <= bounds._ne.lat && position.py >= bounds._sw.lat){
                     result.push(position);
-                    posicao.push(addMarker([position.px, position.py], data.l[i].lt0));
+                    posicao.push(addMarker([position.px, position.py], data.l[i].lt0, "posicao"));
                 }
             }
         }
@@ -91,7 +102,7 @@ function AddStopMarkers(data){
     }
 
     for(var i = 0; i < stopInBounds.length; i++){
-        paradas[paradas.length] = addMarker([stopInBounds[i].px, stopInBounds[i].py], stopInBounds[i].ed + stopInBounds[i].cp);
+        paradas[paradas.length] = addMarker([stopInBounds[i].px, stopInBounds[i].py], stopInBounds[i].ed + stopInBounds[i].cp, "ponto");
     }
 }
 
