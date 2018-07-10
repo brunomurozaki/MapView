@@ -21,9 +21,26 @@ function getParadas(){
     $.get( url, function( data ) {
         data = data.replace("<!DOCTYPE html>", "");
         data = data.replace("<html>", "");
-        data = JSON.parse(data);
-        console.log(data);
+        data = JSON.parse(data);    
+        AddStopMarkers(data);
     });
+}
+
+function AddStopMarkers(data){
+    var bounds = map.getBounds();
+    var stopsInBound = [];
+    var parada;
+
+    for(var i = 0; i < data.length; i++){
+        parada = data[i];
+        if(bounds._ne.lng > parada.px && bounds._sw.lng < parada.px && bounds._ne.lat > parada.py && bounds._sw.lat < parada.py){
+            stopsInBound[stopsInBound.length] = parada;
+        }
+    }
+
+    for(var i = 0; i < stopsInBound.lenght; i++){
+        addMarker([stopsInBound[i].px, stopsInBound[i].py], stopsInBound[i].ed + stopsInBound[i].cp);
+    }
 }
 
 function removeMarker(name){
@@ -56,13 +73,6 @@ function getAddress(address){
             
             //var dataList = $(document.getElementById('endSuggest'));
             //var option;
-            
-            if(features.length > 0){
-                $("#endSuggest").empty();
-                $("#sugestoes").css("display", "block");
-            } else {
-                $("#sugestoes").css("display", "none");
-            }
             
             for(var i = 0; i < features.length; i++){
                 li = $(document.createElement("li"));
